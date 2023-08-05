@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -35,7 +37,11 @@ class Application extends StatelessWidget {
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              width: double.infinity,
+            ),
             _getHeader(),
           ],
         ),
@@ -76,8 +82,9 @@ class Application extends StatelessWidget {
   }
 
   Widget _getRowIcons() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Wrap(
+      runSpacing: 20,
+      spacing: 5,
       children: [
         IconButton(
           color: Colors.blueGrey,
