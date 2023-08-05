@@ -43,6 +43,10 @@ class Application extends StatelessWidget {
             _getHeader(),
             // _getSkillLables(),
             _getCardsRow(),
+            SizedBox(
+              height: 20,
+            ),
+            _getResume(),
           ],
         ),
       ),
@@ -118,35 +122,83 @@ class Application extends StatelessWidget {
     );
   }
 
+  Widget _getResume() {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        vertical: 20,
+        horizontal: 20,
+      ),
+      width: double.infinity,
+      color: Colors.amber[50],
+      child: Column(
+        children: [
+          Text(
+            'سابقه کاری من',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          _getHistoryColumn(),
+        ],
+      ),
+    );
+  }
+
+  Widget _getHistoryColumn() {
+    var sentences = [
+      'برنامه نویس، کارآفرین، بازرگان، سرمایه‌دار، نیکوکار و مدیر ارشد اجرایی آمریکایی',
+      'برای مدت ۲۵ سال به‌عنوان مدیرعامل مایکروسافت کار کرد',
+      'تا سال ۲۰۱۴ در مجموع ۳۹ سال، ریاست هیئت مدیره مایکروسافت را برعهده داشت.',
+      'او در مارس ۲۰۲۰ از هیئت مدیرهٔ این شرکت کناره‌گیری کرد.',
+    ];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        SizedBox(
+          width: double.infinity,
+          height: 20,
+        ),
+        for (var sentence in sentences)
+          Text(
+            textDirection: TextDirection.rtl,
+            sentence,
+          ),
+      ],
+    );
+  }
+
   Widget _getCardsRow() {
     var skill_names = ['Android', 'Dart', 'Flutter', 'Java', 'Kotlin', 'C++'];
     return Padding(
       padding: EdgeInsets.all(4),
       child: Wrap(
-          spacing: 12,
-          runSpacing: 15,
-          alignment: WrapAlignment.start,
-          children: [
-            for (var skill in skill_names)
-              Card(
-                color: Colors.purple[50],
-                elevation: 6,
-                shadowColor: Colors.red,
-                child: Column(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(6),
-                      width: 70,
-                      height: 70,
-                      child: Image(
-                        image: AssetImage('images/${skill.toLowerCase()}.png'),
-                      ),
+        spacing: 12,
+        runSpacing: 15,
+        alignment: WrapAlignment.start,
+        children: [
+          for (var skill in skill_names)
+            Card(
+              color: Colors.purple[50],
+              elevation: 6,
+              shadowColor: Colors.red,
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(6),
+                    width: 70,
+                    height: 70,
+                    child: Image(
+                      image: AssetImage('images/${skill.toLowerCase()}.png'),
                     ),
-                    Padding(padding: EdgeInsets.all(8), child: Text('$skill')),
-                  ],
-                ),
+                  ),
+                  Padding(padding: EdgeInsets.all(8), child: Text('$skill')),
+                ],
               ),
-          ]),
+            ),
+        ],
+      ),
     );
   }
 
