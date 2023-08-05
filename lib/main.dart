@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -43,6 +41,8 @@ class Application extends StatelessWidget {
               width: double.infinity,
             ),
             _getHeader(),
+            // _getSkillLables(),
+            _getCardsRow(),
           ],
         ),
       ),
@@ -112,6 +112,149 @@ class Application extends StatelessWidget {
           onPressed: () {},
           icon: FaIcon(
             FontAwesomeIcons.github,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _getCardsRow() {
+    var skill_names = ['Android', 'Dart', 'Flutter', 'Java', 'Kotlin', 'C++'];
+    return Padding(
+      padding: EdgeInsets.all(4),
+      child: Wrap(
+          spacing: 12,
+          runSpacing: 15,
+          alignment: WrapAlignment.start,
+          children: [
+            for (var skill in skill_names)
+              Card(
+                color: Colors.purple[50],
+                elevation: 6,
+                shadowColor: Colors.red,
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(6),
+                      width: 70,
+                      height: 70,
+                      child: Image(
+                        image: AssetImage('images/${skill.toLowerCase()}.png'),
+                      ),
+                    ),
+                    Padding(padding: EdgeInsets.all(8), child: Text('$skill')),
+                  ],
+                ),
+              ),
+          ]),
+    );
+  }
+
+  Widget _getSkillLables() {
+    return Wrap(
+      spacing: 10,
+      runSpacing: 15,
+      children: [
+        Card(
+          elevation: 6,
+          shadowColor: Colors.red,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(8),
+                width: 80,
+                height: 80,
+                child: Image(
+                  image: AssetImage('images/android.png'),
+                ),
+              ),
+              Padding(padding: EdgeInsets.all(8), child: Text('Android')),
+            ],
+          ),
+        ),
+        Card(
+          elevation: 6,
+          shadowColor: Colors.red,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(8),
+                width: 80,
+                height: 80,
+                child: Image(
+                  image: AssetImage('images/dart.png'),
+                ),
+              ),
+              Padding(padding: EdgeInsets.all(8), child: Text('Dart')),
+            ],
+          ),
+        ),
+        Card(
+          elevation: 6,
+          shadowColor: Colors.red,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(8),
+                width: 80,
+                height: 80,
+                child: Image(
+                  image: AssetImage('images/flutter.png'),
+                ),
+              ),
+              Padding(padding: EdgeInsets.all(8), child: Text('Flutter')),
+            ],
+          ),
+        ),
+        Card(
+          elevation: 6,
+          shadowColor: Colors.red,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(8),
+                width: 80,
+                height: 80,
+                child: Image(
+                  image: AssetImage('images/java.png'),
+                ),
+              ),
+              Padding(padding: EdgeInsets.all(8), child: Text('Java')),
+            ],
+          ),
+        ),
+        Card(
+          elevation: 6,
+          shadowColor: Colors.red,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(8),
+                width: 80,
+                height: 80,
+                child: Image(
+                  image: AssetImage('images/kotlin.png'),
+                ),
+              ),
+              Padding(padding: EdgeInsets.all(8), child: Text('Kotlin')),
+            ],
+          ),
+        ),
+        Card(
+          elevation: 6,
+          shadowColor: Colors.red,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(8),
+                width: 80,
+                height: 80,
+                child: Image(
+                  image: AssetImage('images/c++.png'),
+                ),
+              ),
+              Padding(padding: EdgeInsets.all(8), child: Text('C++')),
+            ],
           ),
         ),
       ],
